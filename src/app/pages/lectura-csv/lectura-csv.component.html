@@ -1,0 +1,64 @@
+<mat-toolbar>
+  Archivo e-boleta
+  <span *ngIf="sumaTotal !== 0">: $ {{ sumaTotal }} </span></mat-toolbar
+>
+
+<input
+  type="file"
+  #csvReader
+  name="Upload CSV"
+  id="subirArchivo"
+  (change)="uploadListener($event)"
+  accept=".csv"
+  style="display: none"
+/>
+
+<button
+  mat-raised-button
+  color="primary"
+  onclick="document.getElementById('subirArchivo').click()"
+>
+  Seleccionar archivo
+</button>
+<table *ngIf="sumaTotal !==0" class="minimalistBlack">
+  <thead>
+    <tr>
+      <th>folio</th>
+      <th>neto</th>
+      <th>iva</th>
+      <th>total</th>
+      <th>dte</th>
+      <th>fecha</th>
+      <th>vendedor</th>
+      <th>sucursal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of records; let i = index">
+      <td>
+        <span>{{ record.folio }}</span>
+      </td>
+      <td>
+        <span>{{ record.neto }}</span>
+      </td>
+      <td>
+        <span>{{ record.iva }}</span>
+      </td>
+      <td>
+        <span>{{ record.total }}</span>
+      </td>
+      <td>
+        <span>{{ record.dte }}</span>
+      </td>
+      <td>
+        <span>{{ record.fecha }}</span>
+      </td>
+      <td>
+        <span>{{ record.vendedor }}</span>
+      </td>
+      <td>
+        <span>{{ record.sucursal }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
